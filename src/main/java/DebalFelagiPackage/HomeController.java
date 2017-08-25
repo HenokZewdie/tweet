@@ -35,7 +35,7 @@ public class HomeController {
     @Autowired
     private CloudinaryConfig cloudc;
     @Autowired
-    private MessageRepository messageRepository;
+    private TweeterRepository tweeterRepository;
 
     String ReceiverFullNameSession, SenderFullNameSession;
 
@@ -73,18 +73,18 @@ public class HomeController {
     @RequestMapping(value = "/loginSuccess", method = RequestMethod.GET)
     public String displayTemp(Model model)
     {
-        Iterable<Message> mList = messageRepository.findAll();
+        Iterable<Tweeter> mList = tweeterRepository.findAll();
         model.addAttribute("mList", mList);
         return "/profile";
     }
 
     @RequestMapping(value = "/tweet", method = RequestMethod.GET)
     public String tweetGet(Model model){
-        model.addAttribute("messaging", new Message());
+        model.addAttribute("messaging", new Tweeter());
         return "tweet";
     }
     @RequestMapping(value = "/tweet", method = RequestMethod.POST)
-    public String housePOST(@RequestParam("file") MultipartFile file, Message message, RedirectAttributes redirectAttributes,
+    public String housePOST(@RequestParam("file") MultipartFile file, Tweeter tweeter, RedirectAttributes redirectAttributes,
                             Model model,  Principal principal, BindingResult result){
 
         if (file.isEmpty()){
@@ -98,7 +98,7 @@ public class HomeController {
             model.addAttribute("message","You successfully uploaded '" + file.getOriginalFilename() + "'");
             String filename = uploadResult.get("public_id").toString() + "." + uploadResult.get("format").toString();
             //String effect = p.getTitle();
-            message.setImage("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='200px'/>");
+            tweeter.setImage("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='200px'/>");
           //  house.setDetailphoto("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='500px'/>");
 
             //System.out.printf("%s\n", cloudc.createUrl(filename,900,900, "fit"));
@@ -108,9 +108,9 @@ public class HomeController {
             model.addAttribute("message", "Sorry I can't upload that!");
         }
 
-        message.setDate(new Date());
-        message.setUsername(principal.getName());
-        messageRepository.save(message);
+        tweeter.setDate(new Date());
+        tweeter.setUsername(principal.getName());
+        tweeterRepository.save(tweeter);
 
         return "redirect:/";
     }

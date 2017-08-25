@@ -12,20 +12,16 @@
 <nav class="navbar navbar-default" th:replace="base::navi"></nav>
 
 <div class="container">
-
-
     <table class="table table-hover" >
 
         <tr th:each="loopin : ${mList}">
-            <td th:utext = "${loopin.image}" th:border="1" />"></h5></td>
+            <td th:utext = "${loopin.image}" />"></td>
             <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: black"  th:text = "${loopin.username}"></h6></td>
             <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: black"  th:text = "${loopin.message}"></h6></td>
-
+            <td th:text = "${#dates.format(loopin.date, 'MMM-dd-yyyy')}"></td>
 
         </tr>
-
     </table>
-
 
 </div>
 </body>

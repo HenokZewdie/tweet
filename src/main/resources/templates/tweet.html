@@ -4,7 +4,7 @@
           xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:replace="base::Mena">
     <meta charset="utf-8" />
-    <title>Spring Security Example</title>
+    <title>Tweet</title>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="jumbotron">
         <div class="container">
             <br /><br /><br />
-            <h4> Registrer Here</h4>
+            <h4> Tweet Here</h4>
             <form action="#" th:action="@{/tweet}" enctype="multipart/form-data" th:object="${messaging}" method="post">
 
                <div><textarea th:field="*{message}" rows="4" cols="50" placeholder="Say Something"></textarea></div>

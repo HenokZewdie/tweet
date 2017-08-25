@@ -2,5 +2,5 @@ package DebalFelagiPackage;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface MessageRepository extends CrudRepository<Message, Long> {
+public interface TweeterRepository extends CrudRepository<Tweeter, Long> {
 }
