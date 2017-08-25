@@ -98,7 +98,7 @@ public class HomeController {
             model.addAttribute("message","You successfully uploaded '" + file.getOriginalFilename() + "'");
             String filename = uploadResult.get("public_id").toString() + "." + uploadResult.get("format").toString();
             //String effect = p.getTitle();
-            tweeter.setImage("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='200px'/>");
+            tweeter.setImage("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='100px'/>");
           //  house.setDetailphoto("<img src='http://res.cloudinary.com/henokzewdie/image/upload/" +filename+"' width='500px'/>");
 
             //System.out.printf("%s\n", cloudc.createUrl(filename,900,900, "fit"));
@@ -112,7 +112,7 @@ public class HomeController {
         tweeter.setUsername(principal.getName());
         tweeterRepository.save(tweeter);
 
-        return "redirect:/";
+        return "redirect:/loginSuccess";
     }
 
 }

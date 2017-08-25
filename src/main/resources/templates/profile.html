@@ -16,9 +16,9 @@
 
         <tr th:each="loopin : ${mList}">
             <td th:utext = "${loopin.image}" />"></td>
-            <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: black"  th:text = "${loopin.username}"></h6></td>
-            <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: black"  th:text = "${loopin.message}"></h6></td>
-            <td th:text = "${#dates.format(loopin.date, 'MMM-dd-yyyy')}"></td>
+            <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: #006699"  th:text = "${loopin.username}"></h6></td>
+            <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: green"  th:text = "${loopin.message}"></h6></td>
+            <td><h6 style="font-family: 'Sansation'; font-size: 16px; color: black" th:text = "${#dates.format(loopin.date, 'MMM-dd-yyyy')}"></h6></td>
 
         </tr>
     </table>
